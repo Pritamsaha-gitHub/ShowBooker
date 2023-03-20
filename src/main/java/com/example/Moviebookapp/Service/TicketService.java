@@ -12,8 +12,11 @@ import com.example.Moviebookapp.Repository.TicketRepository;
 import com.example.Moviebookapp.Repository.UserRepository;
 import com.example.Moviebookapp.ResponseDTOs.TicketResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
+import javax.mail.internet.MimeMessage;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -29,6 +32,8 @@ public class TicketService {
     UserRepository userRepository;
     @Autowired
     ShowSeatsRepository showSeatsRepository;
+    @Autowired
+    JavaMailSender javaMailSender;
 
     public String bookTicket(TicketEntryDto ticketEntryDto) throws Exception{
         //create ticket from EntryDto
@@ -86,7 +91,19 @@ public class TicketService {
         user.setListOfTickets(bookedTicketlist);
         userRepository.save(user);
 
-        //Mail part need to connect
+        //Mail part need to
+        String body = "Hi this is to confirm your booking for seat No "+allocatedSeats +"for the movie : " + ticket.getMovieName();
+
+
+        MimeMessage mimeMessage=javaMailSender.createMimeMessage();
+        MimeMessageHelper mimeMessageHelper=new MimeMessageHelper(mimeMessage,true);
+        mimeMessageHelper.setFrom("backeendacciojob@gmail.com");
+        mimeMessageHelper.setTo(user.getEmail());
+        mimeMessageHelper.setText(body);
+        mimeMessageHelper.setSubject("Confirming your booked Ticket");
+
+        javaMailSender.send(mimeMessage);
+
         return "Ticket has sucessfully been added";
     }
 
