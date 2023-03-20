@@ -1,6 +1,6 @@
 package com.example.Moviebookapp.Models;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

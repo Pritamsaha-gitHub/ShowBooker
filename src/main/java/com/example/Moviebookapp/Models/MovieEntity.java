@@ -2,7 +2,7 @@ package com.example.Moviebookapp.Models;
 
 import com.example.Moviebookapp.Enums.Genre;
 import com.example.Moviebookapp.Enums.Language;
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

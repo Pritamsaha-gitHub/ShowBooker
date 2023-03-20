@@ -1,6 +1,6 @@
 package com.example.Moviebookapp.ResponseDTOs;
 
-import jakarta.persistence.Column;
+import javax.persistence.*;
 import lombok.Builder;
 import lombok.Data;
 

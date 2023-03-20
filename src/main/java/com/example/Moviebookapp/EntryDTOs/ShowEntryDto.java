@@ -1,7 +1,7 @@
 package com.example.Moviebookapp.EntryDTOs;
 
 import com.example.Moviebookapp.Enums.ShowType;
-import jakarta.persistence.Enumerated;
+import javax.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDate;

@@ -1,7 +1,7 @@
 package com.example.Moviebookapp.Models;
 
 import com.example.Moviebookapp.Enums.ShowType;
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
